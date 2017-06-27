@@ -1,0 +1,126 @@
+{
+	"meals": [
+		{
+			"id": 1,
+			"name": "Sweetcorn Chilli and Chowder, Homous, Feta and Roast Vegetable Wrap",
+			"foodCategory": ["Vegetarian", "Diary Free"]
+		},
+		{
+			"id": 2,
+			"name": "Tandoori Salmon with Bharji Crust",
+			"foodCategory": ["Diary Free", "Eggs Free"]
+		},
+		{
+			"id": 3,
+			"name": "Chickpea Pancake with Cream Cheese Roast Tomatoes, and Asparagus",
+			"foodCategory": ["Vegetarian", "Vegan", "Nut Free"]
+		},
+		{
+			"id": 4,
+			"name": "Lamb Kofta with Garlic Yogurt",
+			"foodCategory": ["Nut Free"]
+		},
+		{
+			"id": 5,
+			"name": "Roast Aubergines with Harissa Spiced Chipeas",
+			"foodCategory": ["Vegetarian", "Diary Free"]
+		},
+		{
+			"id": 6,
+			"name": "Orange and Hazel Glazed Nut Cornfed Chicken Supreme",
+			"foodCategory": ["Diary Free"]
+		},
+		{
+			"id": 7,
+			"name": "Roast Peppers with Grilled Halloumi, Olives and Capers",
+			"foodCategory": ["Vegetarian"]
+		},
+		{
+			"id": 8,
+			"name": "Blue Cheese Beef Burger Blackbean",
+			"foodCategory": ["Nut Free", "Eggs Free"]
+		},
+		{
+			"id": 9,
+			"name": "Sweet Potato Burger with Blue Cheese",
+			"foodCategory": ["Vegetarian", "Nut Free", "Eggs Free"]
+		}
+	],
+	"users": [
+		{
+			"id": 1,
+			"type": "CHEF",
+			"fullname": "Alena Stout"
+		},
+		{
+			"id": 2,
+			"type": "USER",
+			"fullname": "Sam Davies"
+		},
+		{
+			"id": 3,
+			"type": "USER",
+			"fullname": "Esther Sanchez"
+		},
+		{
+			"id": 4,
+			"type": "USER",
+			"fullname": "Corey Hopkins"
+		},
+		{
+			"id": 5,
+			"type": "USER",
+			"fullname": "Jamie Hamilton"
+		},
+		{
+			"id": 6,
+			"type": "USER",
+			"fullname": "Zak Butler"
+		},
+		{
+			"id": 7,
+			"type": "USER",
+			"fullname": "Louie Hart"
+		},
+		{
+			"id": 8,
+			"type": "USER",
+			"fullname": "Sophie Saunders"
+		},
+		{
+			"id": 9,
+			"type": "USER",
+			"fullname": "Amiyah Franco"
+		},
+		{
+			"id": 10,
+			"type": "USER",
+			"fullname": "Kylan Floyd"
+		},
+		{
+			"id": 11,
+			"type": "USER",
+			"fullname": "Brenton Marquez"
+		},
+		{
+			"id": 12,
+			"type": "USER",
+			"fullname": "Frank Butler"
+		},
+		{
+			"id": 13,
+			"type": "USER",
+			"fullname": "Rosie Lawson"
+		},
+		{
+			"id": 14,
+			"type": "USER",
+			"fullname": "Ava Thomson"
+		},
+		{
+			"id": 15,
+			"type": "USER",
+			"fullname": "Catalina Park"
+		}
+	]
+}

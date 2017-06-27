@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="blog">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Blog</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="styles/css/bundle.css">
+</head>
+<body>
+  <div ng-view></div>
+<!-- <div ng-include="'layout/shell.html'"></div> -->
+
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+  <script src="app.module.js"></script>
+  <script src="core/app.core.js"></script>
+  <script src="core/app.widgets.js"></script>
+  <script src="core/constants.js"></script>
+  <script src="core/dataservice.js"></script>
+  <script src="core/localstorage.service.js"></script>
+  <script src="core/login.service.js"></script>
+  <script src="core/routing.module.js"></script>
+  <script src="core/routing.js"></script>
+  <script src="core/route.runblock.js"></script>
+
+  <script src="layout/layout.module.js"></script>
+  <script src="layout/shell.controller.js"></script>
+
+  <script src="login/login.module.js"></script>
+  <script src="login/login.controller.js"></script>
+
+  <script src="user/user.module.js"></script>
+  <script src="user/user.controller.js"></script>
+
+  <script src="chef/chef.module.js"></script>
+  <script src="chef/chef.controller.js"></script>
+</body>
+</html>
