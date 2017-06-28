@@ -14,6 +14,7 @@
         vm.addDish = addDish;
         vm.removeDish = removeDish;
         vm.publishMenu = publishMenu;
+        vm.error = false;
 
         activate();
 
@@ -29,6 +30,23 @@
                 vm.dishes = data.meals;
                 return vm.dishes;
             })
+        }
+
+        function publishMenu(){
+          let valid = false,
+              invalidDish;
+          for (let dish of vm.filteredDishes) {
+            valid = search(dish.foodCategory, vm.preferencesArray);
+            if(!valid){
+              invalidDish = dish.name;
+              break;
+            }
+          }
+          if(valid) {
+            localstore.set('menu',vm.filteredDishes);
+          } else {
+              vm.error = {status: true, invalidDish: invalidDish };
+          }
         }
 
         function search(haystack, arr) {
@@ -49,7 +67,7 @@
         }
 
         function addDish(dish){
-          vm.filteredDishes.push(dish);
+          if(!vm.filteredDishes.includes(dish)) vm.filteredDishes.push(dish);          
         }
 
         function removeDish(dish){
