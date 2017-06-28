@@ -4,13 +4,13 @@
     angular.module('blog', [
         'ngRoute',
         'ngMaterial',
-        'blog.core',
-        'blog.routing',
-        'blog.widgets',
-        'blog.layout',
-        'blog.chef',
-        'blog.user',
-        'blog.login'
+        'menu.core',
+        'menu.routing',
+        'menu.widgets',
+        'menu.layout',
+        'menu.chef',
+        'menu.user',
+        'menu.login'
     ])
 
 })();

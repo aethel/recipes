@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.core').run(loginTest);
+    angular.module('menu.core').run(loginTest);
 
     loginTest.$inject = ['$rootScope', '$location'];
 

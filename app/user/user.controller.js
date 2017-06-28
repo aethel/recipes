@@ -1,53 +1,37 @@
 (function() {
     'use strict';
 
-    angular.module('blog.user').controller('UserController', UserController);
+    angular.module('menu.user').controller('UserController', UserController);
 
-    UserController.$inject = ['dataservice', 'dataUrl', 'localstore'];
+    UserController.$inject = ['dataservice', 'dataUrl', 'localstore', 'preferences'];
 
-    function UserController(dataservice, dataUrl, localstore) {
+    function UserController(dataservice, dataUrl, localstore, preferences) {
         let vm = this;
-        vm.articles;
-        vm.likeArticle = likeArticle;
-        vm.isLiked = isLiked;
+        vm.preferences = preferences;
+        vm.selectPreference = selectPreference;
+        vm.findPrefence = findPrefence;
 
-        activate();
-
-        function activate() {
-            return getArticles().then(function() {
-                console.log('Articles received', vm.articles);
-
-            })
-        }
-
-        function getArticles() {
-            return dataservice.get(`${dataUrl}/articles.json`).then(function(data) {
-                vm.articles = data.articles;
-                return vm.articles;
-            })
-        }
-
-        function likeArticle(id) {
-            let likedArticlesArray = [];
-            if (localstore.get('liked')) {
-                likedArticlesArray = localstore.get('liked');
-            }
-            if(likedArticlesArray.includes(id)){
-              let index = likedArticlesArray.findIndex(i => i === id);
-              likedArticlesArray.splice(index,1);
-            } else {
-              likedArticlesArray.push(id);
-            }
-            localstore.set('liked', likedArticlesArray);
-        }
-
-        function isLiked(id){
-          if (!localstore.get('liked')) {
-              return;
+        function findPrefence(data){
+          let preferences = localstore.get('preferences')
+          if (preferences && preferences.includes(data)) {
+            return true;
+          } else {
+            return false;
           }
-          let likedArticlesArray = localstore.get('liked');
-          let foundId = likedArticlesArray.find(i => i === id);
-          return (foundId === id);
+        }
+
+        function selectPreference(data) {
+            console.log(data);
+            let preferences = [];
+            if (localstore.get('preferences')) preferences = localstore.get('preferences');
+
+            if (preferences.includes(data)) {
+                let index = preferences.findIndex(i => i === data);
+                preferences.splice(index, 1);
+            } else {
+                preferences.push(data)
+            }
+            localstore.set('preferences', preferences);
         }
 
     }

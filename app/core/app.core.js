@@ -1,6 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('blog.core', []);
+    angular.module('menu.core', []);
 
 })();

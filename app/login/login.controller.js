@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.login').controller('LoginController', LoginController);
+    angular.module('menu.login').controller('LoginController', LoginController);
 
     LoginController.$inject = ['dataservice', 'dataUrl', 'localstore', 'loginService', '$rootScope', '$location'];
 

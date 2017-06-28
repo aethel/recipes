@@ -1,5 +1,5 @@
 (function() {
     'use strict';
 
-    angular.module('blog.layout', []);
+    angular.module('menu.layout', []);
 })();

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.core').factory('loginService', loginService);
+    angular.module('menu.core').factory('loginService', loginService);
 
     loginService.$inject = ['$http','$log', 'dataUrl','dataservice'];
 

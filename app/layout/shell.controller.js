@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.layout').controller('ShellController', ShellController);
+    angular.module('menu.layout').controller('ShellController', ShellController);
 
     function ShellController() {
         let vm = this;

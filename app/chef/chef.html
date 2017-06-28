@@ -1,26 +1,49 @@
 <div>
-    <md-content>CHEF
-        <md-list flex>
-            <md-list-item ng-if="bl.articles" ng-repeat="article in bl.articles track by $index">
-                <md-card>
-                  <div layout='row'>
-                    <md-card-title>
-                        <md-card-title-media flex='40' ng-if="article.media.source">
-                            <figure>
-                                <img ng-src="app/{{article.media.source}}" alt="article image">
-                            </figure>
-                        </md-card-title-media>
-                        <md-card-title-text flex='60'>
-                            <h2>{{article.title}}</h2>
-                            <address>{{article.author}}</address>
-                            <time datetime="{{article.datePublished}}">{{article.datePublished }}</time>
-                            <p>{{article.article}}</p>
-                        </md-card-title-text>
-                    </md-card-title>
-                    </div>
-                    <md-button class="md-raised md-primary default-button--rightAlign" ng-click="bl.likeArticle(article.id)">{{bl.isLiked(article.id) ? 'Liked' : 'Like'}}</md-button>
-                </md-card>
-            </md-list-item>
-        </md-list flex>
+    <md-content>
+        <md-card ng-if="c.preferences">
+            <div layout='row'>
+                <md-card-title>
+                    <md-card-title-text>
+                        <h2>Preferences</h2>
+                    </md-card-title-text>
+                    <p>{{c.preferences}}</p>
+                </md-card-title>
+            </div>
+        </md-card>
+        <md-card>
+            <div layout='column'>
+              <md-card-title>
+                <md-card-title-text>
+                    <h2>Dishes</h2>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <md-list flex='100'>
+                    <md-list-item ng-repeat="dish in c.dishes track by $index">
+                        {{dish.name}}
+                        <md-button md-no-ink ng-click="c.addDish(dish)" class="md-primary">Add</md-button>
+                    </md-list-item>
+                </md-list>
+              </md-card-content>
+            </div>
+        </md-card>
+        <md-card>
+            <div layout='column'>
+              <md-card-title>
+                <md-card-title-text>
+                    <h2>Suggestions</h2>
+                </md-card-title-text>
+              </md-card-title>
+              <md-card-content>
+                <md-list flex='100'>
+                    <md-list-item ng-repeat="filteredDish in c.filteredDishes track by $index">
+                        {{filteredDish.name}}
+                        <md-button md-no-ink ng-click="c.removeDish(filteredDish)" class="md-primary">Remove</md-button>
+                    </md-list-item>
+                </md-list>
+                <md-button md-no-ink ng-click="c.publishMenu()" class="md-primary">Publish</md-button>
+              </md-card-content>
+            </div>
+        </md-card>
     </md-content>
 </div>

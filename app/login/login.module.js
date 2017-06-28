@@ -1,6 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('blog.login', []);
+    angular.module('menu.login', []);
 
 })();

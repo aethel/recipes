@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.routing').config(routing);
+    angular.module('menu.routing').config(routing);
 
     routing.$inject = ['$routeProvider'];
 

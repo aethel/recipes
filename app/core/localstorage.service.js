@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.core').factory('localstore', localstore);
+    angular.module('menu.core').factory('localstore', localstore);
 
     function localstore() {
         let service = {

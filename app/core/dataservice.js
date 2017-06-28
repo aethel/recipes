@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('blog.core').factory('dataservice', dataservice);
+    angular.module('menu.core').factory('dataservice', dataservice);
 
     dataservice.$inject = ['$http','$log'];
 
@@ -22,7 +22,7 @@
             }
 
            function failed (error) {
-              $log(`Failure getting data: ${error.data}`);
+              console.log(`Failure getting data: ${error.data}`);
             }
         }
     }

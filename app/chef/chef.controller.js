@@ -1,55 +1,61 @@
 (function() {
     'use strict';
 
-    angular.module('blog.chef').controller('ChefController', ChefController);
+    angular.module('menu.chef').controller('ChefController', ChefController);
 
     ChefController.$inject = ['dataservice', 'dataUrl', 'localstore'];
 
     function ChefController(dataservice, dataUrl, localstore) {
         let vm = this;
-        vm.articles;
-        vm.likeArticle = likeArticle;
-        vm.isLiked = isLiked;
+        vm.preferencesArray = localstore.get('preferences') || null;
+        vm.preferences = vm.preferencesArray ? vm.preferencesArray.join(',') : null;
+        vm.dishes;
+        vm.filteredDishes;
+        vm.addDish = addDish;
+        vm.removeDish = removeDish;
+        vm.publishMenu = publishMenu;
 
         activate();
 
         function activate() {
-            return getArticles().then(function() {
-                console.log('Articles received', vm.articles);
-
+            return getMenu().then(function() {
+                console.log('Dishes received', vm.dishes);
+                filterDishes();
             })
         }
 
-        function getArticles() {
-            return dataservice.get(`${dataUrl}/articles.json`).then(function(data) {
-                vm.articles = data.articles;
-                return vm.articles;
+        function getMenu() {
+            return dataservice.get(`${dataUrl}/lunch_booking_system_seed.json`).then(function(data) {
+                vm.dishes = data.meals;
+                return vm.dishes;
             })
         }
 
-        function likeArticle(id) {
-            let likedArticlesArray = [];
-            if (localstore.get('liked')) {
-                likedArticlesArray = localstore.get('liked');
-            }
-            if(likedArticlesArray.includes(id)){
-              let index = likedArticlesArray.findIndex(i => i === id);
-              likedArticlesArray.splice(index,1);
-            } else {
-              likedArticlesArray.push(id);
-            }
-            localstore.set('liked', likedArticlesArray);
+        function search(haystack, arr) {
+          return arr.some(function(v){
+            return haystack.indexOf(v) >= 0;
+          });
         }
 
-        function isLiked(id){
-          if (!localstore.get('liked')) {
-              return;
+        function filterDishes(){
+          let filteredDishes = [];
+
+          for (let dish of vm.dishes) {
+            let hasPreference = search(dish.foodCategory, vm.preferencesArray);
+            if(hasPreference) filteredDishes.push(dish);
           }
-          let likedArticlesArray = localstore.get('liked');
-          let foundId = likedArticlesArray.find(i => i === id);
-          return (foundId === id);
+          console.log(filteredDishes);
+          vm.filteredDishes = filteredDishes;
         }
 
+        function addDish(dish){
+          vm.filteredDishes.push(dish);
+        }
+
+        function removeDish(dish){
+          let index = vm.filteredDishes.indexOf(dish);
+          vm.filteredDishes.splice(index,1);
+        }
     }
 
 })();
