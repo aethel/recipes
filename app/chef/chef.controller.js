@@ -32,47 +32,49 @@
             })
         }
 
-        function publishMenu(){
-          let valid = false,
-              invalidDish;
-          for (let dish of vm.filteredDishes) {
-            valid = search(dish.foodCategory, vm.preferencesArray);
-            if(!valid){
-              invalidDish = dish.name;
-              break;
+        function publishMenu() {
+            let valid = false,
+                invalidDish;
+            for (let dish of vm.filteredDishes) {
+                valid = search(dish.foodCategory, vm.preferencesArray);
+                if (!valid) {
+                    invalidDish = dish.name;
+                    break;
+                }
             }
-          }
-          if(valid) {
-            localstore.set('menu',vm.filteredDishes);
-          } else {
-              vm.error = {status: true, invalidDish: invalidDish };
-          }
+            if (valid) {
+                localstore.set('menu', vm.filteredDishes);
+            } else {
+                vm.error = {
+                    status: true,
+                    invalidDish: invalidDish
+                };
+            }
         }
 
         function search(haystack, arr) {
-          return arr.some(function(v){
-            return haystack.indexOf(v) >= 0;
-          });
+            return arr.some(function(v) {
+                return haystack.indexOf(v) >= 0;
+            });
         }
 
-        function filterDishes(){
-          let filteredDishes = [];
+        function filterDishes() {
+            let filteredDishes = [];
 
-          for (let dish of vm.dishes) {
-            let hasPreference = search(dish.foodCategory, vm.preferencesArray);
-            if(hasPreference) filteredDishes.push(dish);
-          }
-          console.log(filteredDishes);
-          vm.filteredDishes = filteredDishes;
+            for (let dish of vm.dishes) {
+                let hasPreference = search(dish.foodCategory, vm.preferencesArray);
+                if (hasPreference) filteredDishes.push(dish);
+            }
+            vm.filteredDishes = filteredDishes;
         }
 
-        function addDish(dish){
-          if(!vm.filteredDishes.includes(dish)) vm.filteredDishes.push(dish);          
+        function addDish(dish) {
+            if (!vm.filteredDishes.includes(dish)) vm.filteredDishes.push(dish);
         }
 
-        function removeDish(dish){
-          let index = vm.filteredDishes.indexOf(dish);
-          vm.filteredDishes.splice(index,1);
+        function removeDish(dish) {
+            let index = vm.filteredDishes.indexOf(dish);
+            vm.filteredDishes.splice(index, 1);
         }
     }
 

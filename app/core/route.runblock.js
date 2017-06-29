@@ -8,7 +8,6 @@
     function loginTest($rootScope, $location) {
         $rootScope.$on("$routeChangeStart", function(event, next, current) {
             let loggedIn = $rootScope.loggedIn;
-            // data.type === 'USER' ? $location.path('/user') : $location.path('/chef');
             if(!loggedIn || !loggedIn.logged ){
               $location.path('/login');
             }

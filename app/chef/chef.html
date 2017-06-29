@@ -39,7 +39,7 @@
                     <md-list-item ng-repeat="filteredDish in c.filteredDishes track by $index">
                         {{filteredDish.name}}
                         {{filteredDish.foodCategory.toString()}}
-                        <md-button md-no-ink ng-click="c.removeDish(filteredDish)" class="md-primary">Remove</md-button>
+                        <md-button md-no-ink ng-click="c.removeDish(filteredDish)" ng-hide="c.filteredDishes.length <= 3" class="md-primary">Remove</md-button>
                     </md-list-item>
                 </md-list>
                 <md-button md-no-ink ng-click="c.publishMenu()" class="md-primary">Publish</md-button>
