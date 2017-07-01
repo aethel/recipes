@@ -36,45 +36,40 @@
             localstore.set('preferences', preferences);
         }
 
-        function selectDish(dishId){
-          let orders;
-          if(!localstore.get('orders')){
-            let order = {
-              dishId: dishId,
-              user: [user.id]
+        function selectDish() {
+            console.log(vm.order, 'food');
+            let orders;
+            if (!localstore.get('orders')) {
+                setFirstOrder(vm.order, user.id);
+            } else {
+                updateExistingOrder(vm.order, user.id)
             }
-            localstore.set('orders', [order]);
-          } else {
-            orders = localstore.get('orders');
-            for(let order of orders) {
-              if(order.dishId === dishId){
-                let orderUsers = order.user;
-                let userIdPresent = orderUsers.some(item => item === user.id);
-                if(userIdPresent) {
-                   orderUsers.splice(orderUsers.indexOf(user.id),1)
-                 } else {
-                   orderUsers.push(user.id);
-                 }
-              } else {
-                let order = {
-                  dishId: dishId,
-                  user: [user.id]
-                }
-                orders.push(order);
-              }
-            }
-            localstore.set('orders', orders);
-          }
-
-
-
-            console.log(localstore.get('orders'));
-          // check if orderlist is saved
-          //if dish id exists
-          // check if user id
-          //if user id exists and is same as this user, remove. else, add
         }
 
+        function setFirstOrder(order, user) {
+            let orders = new Map();
+            orders.set(order, [user]);
+            console.log(orders);
+            localstore.set('orders', JSON.stringify([...orders]));
+        }
+
+        function updateExistingOrder(dish, user) {
+            let orders = new Map(JSON.parse(localstore.get('orders')));
+            let order = orders.get(dish);
+            if (!order) {
+                orders.set(dish, [user])
+                localstore.set('orders', JSON.stringify([...orders]));
+                return;
+            }
+            if (order.includes(user)) {
+                order.splice(order.indexOf(user), 1);
+            } else {
+                order.push(user);
+            }
+            localstore.set('orders', JSON.stringify([...orders]));
+        }
     }
+
+
 
 })();

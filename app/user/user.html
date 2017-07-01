@@ -24,9 +24,9 @@
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content flex>
-                    <md-radio-group name="dishes">
-                        <md-radio-button ng-repeat="dish in u.menu track by $index" name="dishes" ng-click="u.selectDish(dish.id)" aria-label="{{dish.name}}">
-                            {{dish.name}}{{dish.id}}
+                    <md-radio-group ng-model="u.order" ng-click="u.selectDish()">
+                        <md-radio-button ng-repeat="dish in u.menu track by $index" name="dishes" ng-value="dish.id">
+                            {{::dish.name}}{{dish.id}}
                         </md-radio-button>
                     </md-radio-group>
                 </md-card-content>
