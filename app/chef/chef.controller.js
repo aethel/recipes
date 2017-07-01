@@ -94,8 +94,6 @@
                 orderObj[k] = v;
             }
             vm.ordersCount = orderObj;
-            console.log(orderObj);
-            // $scope.$evalAsync();
         }
 
     }

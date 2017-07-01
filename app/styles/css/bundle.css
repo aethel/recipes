@@ -3,15 +3,63 @@ img {
   height: auto;
 }
 
-.default-button--rightAlign {
-  max-width: 10rem;
-  align-self: flex-end;
+.order {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  margin-bottom: 2rem;
 }
-.default-button--rightAlign {
-  max-width: 10rem;
-  align-self: flex-end;
+
+.order__wrapper {
+  flex: 2 0 auto;
+  max-width: 20rem;
+}
+
+.order__name {
+  display: block;
+}
+
+.order__categories {
+  font-size: 0.75rem;
+}
+
+.order__count {
+  text-align: center;
+  flex: 1 0 auto;
+}
+
+.order__btn {
+  align-self: flex-start;
 }
 img {
   max-width: 100%;
   height: auto;
+}
+.order {
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+
+.order__wrapper {
+  flex: 2 0 auto;
+  max-width: 20rem;
+}
+
+.order__name {
+  display: block;
+}
+
+.order__categories {
+  font-size: 0.75rem;
+}
+
+.order__count {
+  text-align: center;
+  flex: 1 0 auto;
+}
+
+.order__btn {
+  align-self: flex-start;
 }

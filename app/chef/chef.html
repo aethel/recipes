@@ -12,47 +12,42 @@
         </md-card>
         <md-card>
             <div layout='column'>
-              <md-card-title>
-                <md-card-title-text>
-                    <h2>Dishes</h2>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-                <md-list flex='100'>
-                    <md-list-item ng-repeat="dish in c.dishes track by $index">
-                        {{dish.name}}
-                        <md-button md-no-ink ng-click="c.addDish(dish)" class="md-primary">Add</md-button>
-                    </md-list-item>
-                </md-list>
-              </md-card-content>
+                <md-card-title>
+                    <md-card-title-text>
+                        <h2>Dishes</h2>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <md-list flex='100'>
+                        <md-list-item ng-repeat="dish in c.dishes track by $index">
+                            {{dish.name}}
+                            <md-button md-no-ink ng-click="c.addDish(dish)" class="md-primary">Add</md-button>
+                        </md-list-item>
+                    </md-list>
+                </md-card-content>
             </div>
         </md-card>
         <md-card>
             <div layout='column'>
-              <md-card-title>
-                <md-card-title-text>
-                    <h2>Suggestions</h2>
-                </md-card-title-text>
-              </md-card-title>
-              <md-card-content>
-                <md-list flex='100'>
-                    <md-list-item ng-repeat="filteredDish in c.filteredDishes track by $index">
-                        <!-- <span>{{filteredDish.name}}</span> -->
-                        <!-- <span>{{filteredDish.foodCategory.toString()}}</span> -->
-                        &nbsp;
-                        {{filteredDish.id}}
-                        &nbsp;
-                        {{c.ordersCount[filteredDish.id]}}
-                        &nbsp;
-                        {{c.ordersCount[filteredDish.id].length}}
-                        &nbsp;
-                        <span>Orders: {{c.ordersCount[filteredDish.id] ? c.ordersCount[filteredDish.id].length : 0}}</span>
-                        <md-button md-no-ink ng-click="c.removeDish(filteredDish)" ng-hide="c.filteredDishes.length <= 3" class="md-primary">Remove</md-button>
-                    </md-list-item>
-                </md-list>
-                <md-button md-no-ink ng-click="c.publishMenu()" class="md-primary">Publish</md-button>
-                <p ng-show="c.error.status">This list doesn't fulfill all criteria. Invalid dish is: {{c.error.invalidDish}}</p>
-              </md-card-content>
+                <md-card-title>
+                    <md-card-title-text>
+                        <h2>Suggestions</h2>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <md-list flex='100'>
+                        <md-list-item class="order" ng-repeat="filteredDish in c.filteredDishes track by $index">
+                            <div class="order__wrapper">
+                                <span class="order__name">{{filteredDish.name}}</span>
+                                <span class="order__categories">{{filteredDish.foodCategory.toString()}}</span>
+                            </div>
+                            <span class="order__count">Orders: {{c.ordersCount[filteredDish.id] ? c.ordersCount[filteredDish.id].length : 0}}</span>
+                            <md-button md-no-ink ng-click="c.removeDish(filteredDish)" ng-hide="c.filteredDishes.length <= 3" class="order__btn" class="md-primary">Remove</md-button>
+                        </md-list-item>
+                    </md-list>
+                    <md-button md-no-ink ng-click="c.publishMenu()" class="md-primary">Publish</md-button>
+                    <p ng-show="c.error.status">This list doesn't fulfill all criteria. Invalid dish is: {{c.error.invalidDish}}</p>
+                </md-card-content>
             </div>
         </md-card>
     </md-content>
