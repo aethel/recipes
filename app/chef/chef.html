@@ -37,8 +37,16 @@
               <md-card-content>
                 <md-list flex='100'>
                     <md-list-item ng-repeat="filteredDish in c.filteredDishes track by $index">
-                        {{filteredDish.name}}
-                        {{filteredDish.foodCategory.toString()}}
+                        <!-- <span>{{filteredDish.name}}</span> -->
+                        <!-- <span>{{filteredDish.foodCategory.toString()}}</span> -->
+                        &nbsp;
+                        {{filteredDish.id}}
+                        &nbsp;
+                        {{c.ordersCount[filteredDish.id]}}
+                        &nbsp;
+                        {{c.ordersCount[filteredDish.id].length}}
+                        &nbsp;
+                        <span>Orders: {{c.ordersCount[filteredDish.id] ? c.ordersCount[filteredDish.id].length : 0}}</span>
                         <md-button md-no-ink ng-click="c.removeDish(filteredDish)" ng-hide="c.filteredDishes.length <= 3" class="md-primary">Remove</md-button>
                     </md-list-item>
                 </md-list>

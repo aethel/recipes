@@ -26,7 +26,7 @@
                 <md-card-content flex>
                     <md-radio-group ng-model="u.order" ng-click="u.selectDish()">
                         <md-radio-button ng-repeat="dish in u.menu track by $index" name="dishes" ng-value="dish.id">
-                            {{::dish.name}}{{dish.id}}
+                            {{::dish.name}}
                         </md-radio-button>
                     </md-radio-group>
                 </md-card-content>

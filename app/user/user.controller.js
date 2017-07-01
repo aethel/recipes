@@ -46,10 +46,9 @@
             }
         }
 
-        function setFirstOrder(order, user) {
+        function setFirstOrder(dish, user) {
             let orders = new Map();
-            orders.set(order, [user]);
-            console.log(orders);
+            orders.set(dish, [user]);
             localstore.set('orders', JSON.stringify([...orders]));
         }
 
@@ -69,7 +68,4 @@
             localstore.set('orders', JSON.stringify([...orders]));
         }
     }
-
-
-
 })();

@@ -3,9 +3,9 @@
 
     angular.module('menu.chef').controller('ChefController', ChefController);
 
-    ChefController.$inject = ['dataservice', 'dataUrl', 'localstore'];
+    ChefController.$inject = ['dataservice', 'dataUrl', 'localstore', '$interval'];
 
-    function ChefController(dataservice, dataUrl, localstore) {
+    function ChefController(dataservice, dataUrl, localstore, $interval) {
         let vm = this;
         vm.preferencesArray = localstore.get('preferences') || null;
         vm.preferences = vm.preferencesArray ? vm.preferencesArray.join(',') : null;
@@ -17,6 +17,7 @@
         vm.error = false;
 
         activate();
+        checkForOrders();
 
         function activate() {
             return getMenu().then(function() {
@@ -60,7 +61,6 @@
 
         function filterDishes() {
             let filteredDishes = [];
-
             for (let dish of vm.dishes) {
                 let hasPreference = search(dish.foodCategory, vm.preferencesArray);
                 if (hasPreference) filteredDishes.push(dish);
@@ -76,6 +76,28 @@
             let index = vm.filteredDishes.indexOf(dish);
             vm.filteredDishes.splice(index, 1);
         }
+
+        function checkForOrders() {
+            let orders = localstore.get('orders'),
+                newOrders;
+            $interval(function() {
+                let newOrders = localstore.get('orders');
+                updateOrderCounter(newOrders)
+                orders = newOrders;
+            }, 5000);
+        }
+
+        function updateOrderCounter(orders) {
+            let orderMap = new Map(JSON.parse(orders));
+            let orderObj = Object.create(null);
+            for (let [k, v] of orderMap) {
+                orderObj[k] = v;
+            }
+            vm.ordersCount = orderObj;
+            console.log(orderObj);
+            // $scope.$evalAsync();
+        }
+
     }
 
 })();
